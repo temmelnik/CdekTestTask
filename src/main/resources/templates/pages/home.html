@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title th:text="#{title.home}">USUAL</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript" src="webjars/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        function filterTable() {
+            var url = '/search';
+            url = url + '?q=' + encodeURIComponent($('#search').val());
+            $("#noteTable").load(url, function (responseTxt, statusTxt, xhr) {
+                if (statusTxt == "error") {
+                    $("#root").replaceWith(responseTxt);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div align="center" id="root">
+        <h1 th:text="#{headline.home}">Notes List</h1>
+        <h3><a href="/addNote.html" th:text="#{link.addNote}">New Note</a></h3>
+        <label for="search" th:text="#{label.search}">Search records</label>
+        <input type="text" id="search" name="search" onkeyup="filterTable()"/>
+        <div id="noteTable">
+            <th:block layout:include="fragments/notesTable"/>
+        </div>
+    </div>
+</body>
+</html>

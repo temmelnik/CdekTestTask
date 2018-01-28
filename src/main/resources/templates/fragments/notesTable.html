@@ -1,0 +1,18 @@
+<th:block th:fragment="noteTable"
+          xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:th="http://www.thymeleaf.org">
+    <table border="1">
+        <thead>
+        <tr>
+            <th th:text="#{table.id}">Id</th>
+            <th th:text="#{table.record}">Record</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="note : ${allNotes}">
+            <td th:text="${note.id}"></td>
+            <td th:text="${note.record}"></td>
+        </tr>
+        </tbody>
+    </table>
+</th:block>

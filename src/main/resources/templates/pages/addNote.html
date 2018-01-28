@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="#{title.add}">Add New Note</title>
+</head>
+<body>
+    <div align="center">
+        <h1 th:text="#{headline.add}">Add New Note</h1>
+        <h3><a href="/" th:text="#{link.home}">All notes</a></h3>
+        <form action="#" th:action="@{/addNote}" th:object="${note}" method="post">
+            <table>
+                <tr>
+                    <td th:text="#{table.record}">Record:</td>
+                    <td><input type="text" th:field="*{record}" size="40" /></td>
+                    <td colspan="2" align="center"><input type="submit" th:value="#{button.add}" value="Save"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
