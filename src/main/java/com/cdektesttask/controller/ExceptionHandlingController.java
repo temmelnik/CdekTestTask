@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServletResponse;
  * Controller for Exception
  * Error name and error message get injected in error page template
  **/
-
 @ControllerAdvice
 public class ExceptionHandlingController {
     private static final Logger logger = LoggerFactory.getLogger(ExceptionHandlingController.class);
