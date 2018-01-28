@@ -1,5 +1,6 @@
 package com.cdektesttask.controller;
 
+import com.cdektesttask.model.Note;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.MessageSource;
@@ -13,6 +14,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Controller for Exception
+ * Error name and error message get injected in error page template
+ **/
 
 @ControllerAdvice
 public class ExceptionHandlingController {
@@ -24,6 +29,10 @@ public class ExceptionHandlingController {
         this.messageSource = messageSource;
     }
 
+    /**
+     * Specific handling validation exception for {@link Note} object,
+     * which can be thrown by {@link NoteController#addNote(Note)} method
+     **/
     @ExceptionHandler(BindException.class)
     public String noteValidationError(BindException e, Model model){
         if (e.getFieldError().getField().equals("record")){
